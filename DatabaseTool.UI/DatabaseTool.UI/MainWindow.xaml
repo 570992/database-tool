@@ -1,12 +1,61 @@
-﻿<Window x:Class="DatabaseTool.UI.MainWindow"
+﻿<Window x:Class="DatabaseMigratieApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DatabaseTool.UI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Database Migratie - UC-01" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <TextBlock Grid.Row="0" Text="Data Migratie - Access naar Database" 
+                   FontSize="16" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Stap 1: Bestand uploaden -->
+        <GroupBox Grid.Row="1" Header="Stap 1: Access Bestand Uploaden" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBox x:Name="txtFilePath" Width="300" Margin="0,0,10,0"
+                         IsReadOnly="True"/>
+                <Button x:Name="btnBrowse" Content="Bladeren..." 
+                        Click="BtnBrowse_Click" Width="80" Margin="0,0,10,0"/>
+                <Button x:Name="btnStartMigration" Content="Start Migratie" 
+                        Click="BtnStartMigration_Click" Width="100"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Stap 2: Validatie -->
+        <GroupBox Grid.Row="2" Header="Stap 2: Validatie" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <TextBlock x:Name="txtValidation" Text="Selecteer een Access bestand..." />
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Stap 3: Voortgang -->
+        <GroupBox Grid.Row="3" Header="Stap 3: Migratie Voortgang" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <ProgressBar x:Name="progressBar" Height="20" Minimum="0" Maximum="100" 
+                           Value="0" Visibility="Collapsed"/>
+                <TextBlock x:Name="txtProgress" Margin="0,10,0,0" TextWrapping="Wrap"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Stap 4: Resultaat -->
+        <GroupBox Grid.Row="4" Header="Stap 4: Resultaat">
+            <StackPanel Margin="10">
+                <TextBlock x:Name="txtResult" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" 
+                           HorizontalAlignment="Center">
+                    <Button x:Name="btnRetry" Content="Opnieuw Proberen" 
+                            Click="BtnRetry_Click" Width="120" Margin="0,0,10,0"
+                            Visibility="Collapsed"/>
+                    <Button x:Name="btnCancel" Content="Annuleren" 
+                            Click="BtnCancel_Click" Width="80"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
