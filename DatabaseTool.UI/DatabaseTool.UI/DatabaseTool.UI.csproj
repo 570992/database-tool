@@ -8,4 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.5.0" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.10" />
+  </ItemGroup>
+
 </Project>
